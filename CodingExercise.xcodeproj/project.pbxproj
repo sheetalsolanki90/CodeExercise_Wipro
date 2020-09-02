@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42277A2D24FFC2AD00C20309 /* APIManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42277A2B24FFC2AD00C20309 /* APIManagerTests.swift */; };
+		42277A2E24FFC2AD00C20309 /* CountryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42277A2C24FFC2AD00C20309 /* CountryViewModelTests.swift */; };
 		429704FD24FE80EA001CF11C /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429704FC24FE80EA001CF11C /* CountryTableViewCell.swift */; };
 		42FC0D3E24FE611800E5ACC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FC0D3D24FE611800E5ACC4 /* AppDelegate.swift */; };
 		42FC0D4024FE611800E5ACC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FC0D3F24FE611800E5ACC4 /* SceneDelegate.swift */; };
@@ -37,6 +39,8 @@
 		076E974BCB1FD4DA9B024E89 /* Pods-CodingExerciseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodingExerciseTests.release.xcconfig"; path = "Target Support Files/Pods-CodingExerciseTests/Pods-CodingExerciseTests.release.xcconfig"; sourceTree = "<group>"; };
 		1D1004764DB0BA1927CB7883 /* Pods_CodingExercise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodingExercise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C3FA620A152735DDB985661 /* Pods-CodingExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodingExercise.release.xcconfig"; path = "Target Support Files/Pods-CodingExercise/Pods-CodingExercise.release.xcconfig"; sourceTree = "<group>"; };
+		42277A2B24FFC2AD00C20309 /* APIManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
+		42277A2C24FFC2AD00C20309 /* CountryViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewModelTests.swift; sourceTree = "<group>"; };
 		429704FC24FE80EA001CF11C /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		42FC0D3A24FE611800E5ACC4 /* CodingExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FC0D3D24FE611800E5ACC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				42FC0D5424FE611A00E5ACC4 /* CodingExerciseTests.swift */,
+				42277A2B24FFC2AD00C20309 /* APIManagerTests.swift */,
+				42277A2C24FFC2AD00C20309 /* CountryViewModelTests.swift */,
 				42FC0D5624FE611A00E5ACC4 /* Info.plist */,
 			);
 			path = CodingExerciseTests;
@@ -363,6 +369,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42277A2D24FFC2AD00C20309 /* APIManagerTests.swift in Sources */,
+				42277A2E24FFC2AD00C20309 /* CountryViewModelTests.swift in Sources */,
 				42FC0D5524FE611A00E5ACC4 /* CodingExerciseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

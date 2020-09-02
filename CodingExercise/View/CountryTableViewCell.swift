@@ -58,19 +58,8 @@ class CountryTableViewCell: UITableViewCell {
                 print("something went wrong, element.Name can not be cast to String")
                 return
             }
-            print("imgUrl: \(countryCellViewModel!.imageUrl)")
-            if countryCellViewModel != nil {
-                var str = countryCellViewModel!.imageUrl
-                str = str.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
-
-                let url = URL(string:str)
-                //            let url = URL(string: value)!
-                print("imgUrl: \(countryCellViewModel!.imageUrl)")
-                self.imgView.kf.setImage(with: url)
-
-            }
-
-
+            let url = URL(string:urlStr)
+            self.imgView.kf.setImage(with: url)
         }
     }
     // MARK: Initializing
