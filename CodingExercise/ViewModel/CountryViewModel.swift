@@ -8,7 +8,7 @@
 
 import UIKit
 class CountryViewModel: NSObject {
-    let apiService: APIManager
+    let apiService: APIServiceProtocol
     private var countries:[CountryProperties] = [CountryProperties]()
     private var cellViewModels: [CountryCellViewModel] = [CountryCellViewModel]() {
         didSet {
@@ -38,12 +38,12 @@ class CountryViewModel: NSObject {
     var updateCountryTitle: (()->())?
     var showAlertClosure: (()->())?
 
-    init(apiService: APIManager = APIManager()){
+    init(apiService: APIServiceProtocol = APIManager()){
         self.apiService = apiService
     }
     public func requestData(){
         self.isLoading = true
-        apiService.requestData(url: "s/2iodh4vg0eortkl/facts.json", completion: {[weak self] (result) in
+        apiService.requestData(completion: {[weak self] (result) in
             self?.isLoading = false
             switch result {
             case .success(let returnJson) :
@@ -56,8 +56,8 @@ class CountryViewModel: NSObject {
                 case .connectionError:
                     self?.alertMessage = "Check your Internet connection."
 
-                case .authorizationError(let errorJson):
-                    self?.alertMessage = "Request Failed"
+                case .authorizationError:
+                    self?.alertMessage = "Authentication error"
 
                 default:
                     self?.alertMessage = "Request Failed"

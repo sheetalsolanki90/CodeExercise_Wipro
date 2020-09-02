@@ -10,6 +10,7 @@
 		42277A2D24FFC2AD00C20309 /* APIManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42277A2B24FFC2AD00C20309 /* APIManagerTests.swift */; };
 		42277A2E24FFC2AD00C20309 /* CountryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42277A2C24FFC2AD00C20309 /* CountryViewModelTests.swift */; };
 		429704FD24FE80EA001CF11C /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429704FC24FE80EA001CF11C /* CountryTableViewCell.swift */; };
+		42ABD69324FFEA39003AF681 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 42277A3124FFDEE000C20309 /* content.json */; };
 		42FC0D3E24FE611800E5ACC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FC0D3D24FE611800E5ACC4 /* AppDelegate.swift */; };
 		42FC0D4024FE611800E5ACC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FC0D3F24FE611800E5ACC4 /* SceneDelegate.swift */; };
 		42FC0D4224FE611800E5ACC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FC0D4124FE611800E5ACC4 /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 		3C3FA620A152735DDB985661 /* Pods-CodingExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodingExercise.release.xcconfig"; path = "Target Support Files/Pods-CodingExercise/Pods-CodingExercise.release.xcconfig"; sourceTree = "<group>"; };
 		42277A2B24FFC2AD00C20309 /* APIManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
 		42277A2C24FFC2AD00C20309 /* CountryViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewModelTests.swift; sourceTree = "<group>"; };
+		42277A3124FFDEE000C20309 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		429704FC24FE80EA001CF11C /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		42FC0D3A24FE611800E5ACC4 /* CodingExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FC0D3D24FE611800E5ACC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				42FC0D5424FE611A00E5ACC4 /* CodingExerciseTests.swift */,
 				42277A2B24FFC2AD00C20309 /* APIManagerTests.swift */,
 				42277A2C24FFC2AD00C20309 /* CountryViewModelTests.swift */,
+				42277A3124FFDEE000C20309 /* content.json */,
 				42FC0D5624FE611A00E5ACC4 /* Info.plist */,
 			);
 			path = CodingExerciseTests;
@@ -273,6 +276,7 @@
 				42FC0D4A24FE611A00E5ACC4 /* LaunchScreen.storyboard in Resources */,
 				42FC0D4724FE611A00E5ACC4 /* Assets.xcassets in Resources */,
 				42FC0D4524FE611800E5ACC4 /* Main.storyboard in Resources */,
+				42ABD69324FFEA39003AF681 /* content.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

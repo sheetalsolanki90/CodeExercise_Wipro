@@ -23,25 +23,26 @@ enum HTTPMethod: String {
     case trace   = "TRACE"
     case connect = "CONNECT"
 }
-enum RequestError: Error {
-    case unknownError
-    case connectionError
-    case authorizationError(JSON)
-    case invalidRequest
-    case notFound
-    case invalidResponse
-    case serverError
-    case serverUnavailable
+enum RequestError:String, Error {
+    typealias RawValue = String
+    case unknownError = "UnKnown Error"
+    case connectionError = "Check your Internet connection."
+    case authorizationError = "Autherization error"
+    case invalidRequest = "Request Failed"
+    case notFound = "Data Not Found"
+    case invalidResponse = "Invalid Response"
+    case serverError = "Server Error"
+    case serverUnavailable = "Server is not availble"
 }
 protocol APIServiceProtocol {
-    func requestData(url:String,completion: @escaping (ApiResult)->Void)
+    func requestData(completion: @escaping (ApiResult)->Void)
 }
 
 class APIManager: APIServiceProtocol {
-    let baseUrl = "https://dl.dropboxusercontent.com/"
+    let baseUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     typealias parameters = [String:Any]
-    func requestData(url: String, completion: @escaping (ApiResult) -> Void) {
-        var request = URLRequest(url: URL(string: baseUrl+url)!)
+    func requestData(completion: @escaping (ApiResult) -> Void) {
+        var request = URLRequest(url: URL(string: baseUrl)!)
         request.httpMethod = "GET"
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -57,7 +58,7 @@ class APIManager: APIServiceProtocol {
                     case 200:
                         completion(ApiResult.success(responseJson))
                     case 400...499:
-                        completion(ApiResult.failure(.authorizationError(responseJson)))
+                        completion(ApiResult.failure(.authorizationError))
                     case 500...599:
                         completion(ApiResult.failure(.serverError))
                     default:

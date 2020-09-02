@@ -26,10 +26,9 @@ class APIManagerTests: XCTestCase {
         //Given a Api Service
         let sut = self.sut!
 
-        let url = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
         //While requesting for data
         let expect = XCTestExpectation(description: "CallBack")
-        sut.requestData(url: url) { ApiResult in
+        sut.requestData{ ApiResult in
             expect.fulfill()
             XCTAssertNotNil(ApiResult)
         }
