@@ -90,7 +90,7 @@ class CountryTableViewCell: UITableViewCell {
         self.contentView.addConstraint(NSLayoutConstraint(item: containerView, attribute: .trailing, relatedBy: .equal, toItem: self.contentView, attribute: .trailing, multiplier: 1, constant: 0))
 
 
-       let containerHeightConstraint =  NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 140)// constant is 140 because we kept the image height as 100, so minimum height of container will be 140
+        let containerHeightConstraint =  NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: containerView, attribute: .width, multiplier: 0.2, constant: 40)// constant is 140 because we kept the image height as 100, so minimum height of container will be 140
         containerView.addConstraints([containerHeightConstraint])
 
 
@@ -99,9 +99,9 @@ class CountryTableViewCell: UITableViewCell {
         let imageTopConstraint = NSLayoutConstraint(item: imgView, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1.0, constant: 20)
         containerView.addConstraints([imageTopConstraint])
 
-        let imageWidthConstraint = NSLayoutConstraint(item: imgView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 100)
+        let imageWidthConstraint = NSLayoutConstraint(item: imgView, attribute: .width, relatedBy: .equal, toItem: containerView, attribute: .width, multiplier: 0.2, constant: 10)
         containerView.addConstraints([imageWidthConstraint])
-        let imageHeigthConstraint = NSLayoutConstraint(item: imgView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 100)
+        let imageHeigthConstraint = NSLayoutConstraint(item: imgView, attribute: .height, relatedBy: .equal, toItem: containerView, attribute: .width, multiplier: 0.2, constant: 10)
         containerView.addConstraints([imageHeigthConstraint])
 
         let titleLabelTopConstraint =  NSLayoutConstraint(item: titleLbl, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1.0, constant: 20)
