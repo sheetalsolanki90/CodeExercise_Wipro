@@ -1,0 +1,32 @@
+PODS:
+  - DTModelStorage (8.1.0):
+    - DTModelStorage/Core (= 8.1.0)
+  - DTModelStorage/Core (8.1.0)
+  - DTTableViewManager (7.2.0):
+    - DTModelStorage (~> 8.1.0)
+  - Kingfisher (5.14.1):
+    - Kingfisher/Core (= 5.14.1)
+  - Kingfisher/Core (5.14.1)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - DTTableViewManager
+  - Kingfisher
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - DTModelStorage
+    - DTTableViewManager
+    - Kingfisher
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  DTModelStorage: 4d95b242464719155d5068eebb881d96c707a415
+  DTTableViewManager: 67c48a338dfe7a5d1aa54f2bd6116fce22063909
+  Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: d0e683ceab10d59cc911e0376c2f1d0f1249ecfb
+
+COCOAPODS: 1.9.3
