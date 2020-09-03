@@ -6,7 +6,6 @@ target 'CodingExercise' do
   use_frameworks!
       pod 'SwiftyJSON'
       pod 'Kingfisher'
-      pod  'DTTableViewManager'
 
   # Pods for CodingExercise
 
