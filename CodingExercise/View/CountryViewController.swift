@@ -8,11 +8,11 @@
 
 import UIKit
 class CountryViewController: UIViewController {
-
+    
     var tableView = UITableView()
     private var pullControl = UIRefreshControl()
     var activityIndicator : UIActivityIndicatorView?
-
+    
     lazy var viewModel: CountryViewModel = {
         return CountryViewModel()
     }()
@@ -28,7 +28,8 @@ class CountryViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
         self.view.addSubview(tableView)
-        tableView.register(CountryTableViewCell.self, forCellReuseIdentifier: "CountryTableViewCell")
+        tableView.tableFooterView = UIView()
+        tableView.register(CountryTableViewCell.self, forCellReuseIdentifier: Constants.COUNTRY_TABLEVIEW_CELL_IDENTIFIER)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         self.view.backgroundColor = UIColor.white
         self.view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: self.view.safeAreaLayoutGuide, attribute: .top, multiplier: 1, constant: 0))
@@ -37,7 +38,7 @@ class CountryViewController: UIViewController {
         self.view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0))
         tableView.tableFooterView = UIView()
         //setting up Pull to refresh
-        pullControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        pullControl.attributedTitle = NSAttributedString(string:Constants.PULL_TO_REFRESH_MSG)
         pullControl.addTarget(self, action: #selector(refreshListData(_:)), for: .valueChanged)
         if #available(iOS 10.0, *) {
             tableView.refreshControl = pullControl
@@ -52,14 +53,14 @@ class CountryViewController: UIViewController {
         self.view.addSubview(activityIndicator!)
         activityIndicator?.startAnimating()
     }
-
+    
     func hideActivityIndicator(){
         if (activityIndicator != nil){
             activityIndicator?.stopAnimating()
         }
     }
     func initViewModel() {
-
+        
         // Naive binding
         viewModel.showAlertClosure = { [weak self] () in
             DispatchQueue.main.async {
@@ -68,7 +69,7 @@ class CountryViewController: UIViewController {
                 }
             }
         }
-
+        
         viewModel.updateLoadingStatus = { [weak self] () in
             DispatchQueue.main.async {
                 let isLoading = self?.viewModel.isLoading ?? false
@@ -85,7 +86,7 @@ class CountryViewController: UIViewController {
                 }
             }
         }
-
+        
         viewModel.reloadTableViewClosure = { [weak self] () in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -99,54 +100,54 @@ class CountryViewController: UIViewController {
         viewModel.requestData()
     }
     func showAlert( _ message: String ) {
-           let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-           alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-           self.present(alert, animated: true, completion: nil)
-       }
-
-        // Action when Pull to refresh event
+        let alert = UIAlertController(title: Constants.AlertConstants.ALERT_TITLE, message: message, preferredStyle: .alert)
+        alert.addAction( UIAlertAction(title: Constants.AlertConstants.ALERT_OK, style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // Action when Pull to refresh event
     @objc func refreshListData(_ sender: Any) {
         self.pullControl.endRefreshing() // You can stop after API Call
         viewModel.requestData()
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 extension CountryViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CountryTableViewCell", for: indexPath) as? CountryTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.COUNTRY_TABLEVIEW_CELL_IDENTIFIER, for: indexPath) as? CountryTableViewCell else {
             fatalError("Cell not exists in storyboard")
         }
-
+        
         let cellVM = viewModel.getCellViewModel( at: indexPath )
         cell.countryCellViewModel = cellVM
-
+        
         return cell
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfCells
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         return UITableView.automaticDimension
-
+        
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-
+        
     }
 }

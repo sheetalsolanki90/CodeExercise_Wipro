@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		42277A2D24FFC2AD00C20309 /* APIManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42277A2B24FFC2AD00C20309 /* APIManagerTests.swift */; };
 		42277A2E24FFC2AD00C20309 /* CountryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42277A2C24FFC2AD00C20309 /* CountryViewModelTests.swift */; };
+		425C9D062511165D006C8FD4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425C9D052511165D006C8FD4 /* Constants.swift */; };
 		429704FD24FE80EA001CF11C /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429704FC24FE80EA001CF11C /* CountryTableViewCell.swift */; };
 		42ABD69324FFEA39003AF681 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 42277A3124FFDEE000C20309 /* content.json */; };
-		42ABD69625001600003AF681 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42ABD69525001600003AF681 /* Main.storyboard */; };
 		42FC0D3E24FE611800E5ACC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FC0D3D24FE611800E5ACC4 /* AppDelegate.swift */; };
 		42FC0D4024FE611800E5ACC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FC0D3F24FE611800E5ACC4 /* SceneDelegate.swift */; };
 		42FC0D4724FE611A00E5ACC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42FC0D4624FE611A00E5ACC4 /* Assets.xcassets */; };
@@ -42,8 +42,8 @@
 		42277A2B24FFC2AD00C20309 /* APIManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
 		42277A2C24FFC2AD00C20309 /* CountryViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewModelTests.swift; sourceTree = "<group>"; };
 		42277A3124FFDEE000C20309 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
+		425C9D052511165D006C8FD4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		429704FC24FE80EA001CF11C /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
-		42ABD69525001600003AF681 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		42FC0D3A24FE611800E5ACC4 /* CodingExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FC0D3D24FE611800E5ACC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42FC0D3F24FE611800E5ACC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,7 +132,6 @@
 				429704F924FE7D99001CF11C /* View */,
 				42FC0D4624FE611A00E5ACC4 /* Assets.xcassets */,
 				42FC0D4824FE611A00E5ACC4 /* LaunchScreen.storyboard */,
-				42ABD69525001600003AF681 /* Main.storyboard */,
 				42FC0D4B24FE611A00E5ACC4 /* Info.plist */,
 				42FC0D6A24FE713200E5ACC4 /* CodingExercise-Bridging-Header.h */,
 			);
@@ -155,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				42FC0D6024FE6BB500E5ACC4 /* APIManager.swift */,
+				425C9D052511165D006C8FD4 /* Constants.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -198,6 +198,7 @@
 				42FC0D3724FE611800E5ACC4 /* Frameworks */,
 				42FC0D3824FE611800E5ACC4 /* Resources */,
 				C54DA8A381D12D4486C5140F /* [CP] Embed Pods Frameworks */,
+				425C9D0725111BFA006C8FD4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -273,7 +274,6 @@
 				42FC0D4A24FE611A00E5ACC4 /* LaunchScreen.storyboard in Resources */,
 				42FC0D4724FE611A00E5ACC4 /* Assets.xcassets in Resources */,
 				42ABD69324FFEA39003AF681 /* content.json in Resources */,
-				42ABD69625001600003AF681 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +308,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		425C9D0725111BFA006C8FD4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "if [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		C54DA8A381D12D4486C5140F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -362,6 +379,7 @@
 				42FC0D6924FE6FC400E5ACC4 /* CountryViewController.swift in Sources */,
 				42FC0D4024FE611800E5ACC4 /* SceneDelegate.swift in Sources */,
 				42FC0D6424FE6BD200E5ACC4 /* CountryViewModel.swift in Sources */,
+				425C9D062511165D006C8FD4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,11 +39,11 @@ protocol APIServiceProtocol {
 }
 
 class APIManager: APIServiceProtocol {
-    let baseUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     typealias parameters = [String:Any]
     func requestData(completion: @escaping (ApiResult) -> Void) {
-        var request = URLRequest(url: URL(string: baseUrl)!)
-        request.httpMethod = "GET"
+        var request = URLRequest(url: URL(string:Constants.BASE_URL)!)
+        request.httpMethod = Constants.HTTP_METHOD_GET
+        request.timeoutInterval = 30
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print(error)
@@ -52,8 +52,6 @@ class APIManager: APIServiceProtocol {
                 do {
                     let utf8Data = String(decoding: data, as: UTF8.self).data(using: .utf8)
                     let responseJson = try JSON(data: utf8Data!)
-                    print("responseCode : \(responseCode.statusCode)")
-                    print("responseJSON : \(responseJson)")
                     switch responseCode.statusCode {
                     case 200:
                         completion(ApiResult.success(responseJson))
@@ -66,9 +64,8 @@ class APIManager: APIServiceProtocol {
                         break
                     }
                 }
-                catch let parseJSONError {
+                catch let _ {
                     completion(ApiResult.failure(.unknownError))
-                    print("error on parsing request to JSON : \(parseJSONError)")
                 }
             }
         }.resume()

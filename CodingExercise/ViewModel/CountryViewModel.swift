@@ -37,7 +37,7 @@ class CountryViewModel: NSObject {
     var updateLoadingStatus: (()->())?
     var updateCountryTitle: (()->())?
     var showAlertClosure: (()->())?
-
+    
     init(apiService: APIServiceProtocol = APIManager()){
         self.apiService = apiService
     }
@@ -49,41 +49,43 @@ class CountryViewModel: NSObject {
             case .success(let returnJson) :
                 self?.countryTitle = (returnJson["title"].stringValue)
                 let countryRows = returnJson["rows"].arrayValue.compactMap {return CountryProperties(data: try! $0.rawData())}
-                self?.countries = countryRows
+                
+                //                self?.countries = countryRows
+                self?.countries = countryRows.filter { $0.title != nil }
+                
                 self?.processFetchedData(countries: self!.countries)
             case .failure(let failure) :
                 switch failure {
                 case .connectionError:
-                    self?.alertMessage = "Check your Internet connection."
-
+                    self?.alertMessage = Constants.ErrorConstants.NETWORK_ERROR
+                    
                 case .authorizationError:
-                    self?.alertMessage = "Authentication error"
-
+                    self?.alertMessage = Constants.ErrorConstants.AUTHENTICATION_ERROR
+                    
                 default:
-                    self?.alertMessage = "Request Failed"
+                    self?.alertMessage = Constants.ErrorConstants.REQUEST_FAILED
                 }
             }
         })
-
+        
     }
     func getCellViewModel(at indexPath: IndexPath)-> CountryCellViewModel{
         return cellViewModels[indexPath.row]
     }
     func createCellViewModel(country: CountryProperties) -> CountryCellViewModel {
-
-
+        
         return CountryCellViewModel( titleText: country.title ?? "",
-                                      descText: country.description ?? "",
-                                      imageUrl: country.imageHref ?? "")
+                                     descText: country.description ?? "",
+                                     imageUrl: country.imageHref ?? "")
     }
     private func processFetchedData( countries: [CountryProperties] ) {
-           self.countries = countries // Cache
-           var vms = [CountryCellViewModel]()
-           for countryObj in countries {
-               vms.append( createCellViewModel(country: countryObj) )
-           }
-           self.cellViewModels = vms
-       }
+        self.countries = countries // Cache
+        var vms = [CountryCellViewModel]()
+        for countryObj in countries {
+            vms.append( createCellViewModel(country: countryObj) )
+        }
+        self.cellViewModels = vms
+    }
 }
 struct CountryCellViewModel {
     let titleText: String
