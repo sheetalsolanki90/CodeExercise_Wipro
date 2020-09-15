@@ -64,7 +64,7 @@ class APIManager: APIServiceProtocol {
                         break
                     }
                 }
-                catch let _ {
+                catch _ {
                     completion(ApiResult.failure(.unknownError))
                 }
             }
