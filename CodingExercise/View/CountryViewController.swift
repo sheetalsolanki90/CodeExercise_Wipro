@@ -10,7 +10,7 @@ import UIKit
 class CountryViewController: UIViewController {
     
     var tableView = UITableView()
-    private var pullControl = UIRefreshControl()
+    private var refreshControl = UIRefreshControl()
     var activityIndicator : UIActivityIndicatorView?
     
     lazy var viewModel: CountryViewModel = {
@@ -38,12 +38,12 @@ class CountryViewController: UIViewController {
         self.view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0))
         tableView.tableFooterView = UIView()
         //setting up Pull to refresh
-        pullControl.attributedTitle = NSAttributedString(string:Constants.PULL_TO_REFRESH_MSG)
-        pullControl.addTarget(self, action: #selector(refreshListData(_:)), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string:Constants.PULL_TO_REFRESH_MSG)
+        refreshControl.addTarget(self, action: #selector(refreshListData(_:)), for: .valueChanged)
         if #available(iOS 10.0, *) {
-            tableView.refreshControl = pullControl
+            tableView.refreshControl = refreshControl
         } else {
-            tableView.addSubview(pullControl)
+            tableView.addSubview(refreshControl)
         }
     }
     func showActivityIndicator() {
@@ -55,6 +55,7 @@ class CountryViewController: UIViewController {
     }
     
     func hideActivityIndicator(){
+        self.refreshControl.endRefreshing()
         if (activityIndicator != nil){
             activityIndicator?.stopAnimating()
         }
@@ -100,6 +101,7 @@ class CountryViewController: UIViewController {
         viewModel.requestData()
     }
     func showAlert( _ message: String ) {
+        self.refreshControl.endRefreshing()
         let alert = UIAlertController(title: Constants.AlertConstants.ALERT_TITLE, message: message, preferredStyle: .alert)
         alert.addAction( UIAlertAction(title: Constants.AlertConstants.ALERT_OK, style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -107,7 +109,7 @@ class CountryViewController: UIViewController {
     
     // Action when Pull to refresh event
     @objc func refreshListData(_ sender: Any) {
-        self.pullControl.endRefreshing() // You can stop after API Call
+        self.refreshControl.endRefreshing()
         viewModel.requestData()
     }
     /*
